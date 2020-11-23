@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", inline: "`which parted` /dev/sdb mkpart primary 0% 100%"
     config.vm.provision "shell", inline: " `which mkfs.xfs` -qf  /dev/sdb1"
     config.vm.provision "shell", inline: "mount /dev/sdb1 /mnt/glusterfs"
-    config.vm.provision "shell", inline: "echo UUID=$(lsblk -o NAME,UUID | grep sdb1 | sed 's/^.*sdb1\s*//') /mnt/glusterfs xfs noatime,nobarrier 0 0| tee -a  /etc/fstab"
+    config.vm.provision "shell", inline: "echo UUID=$(lsblk -o NAME,UUID | grep sdb1 | sed 's/^.*sdb1\s*//') /mnt/glusterfs xfs defaults 0 0| tee -a  /etc/fstab"
 
     $instance=1
     (1..$instance).each do |i|
