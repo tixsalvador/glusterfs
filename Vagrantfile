@@ -21,7 +21,6 @@ Vagrant.configure("2") do |config|
            config.vm.define "glusterfs#{i}" do |node|
              node.vm.hostname =  "glusterfs#{i}"
              node.vm.network "private_network", ip: "10.10.10.#{i+200}"
-             #node.vm.disk :disk, name: "gluster", size: "2GB"
              node.vm.provider "virtualbox" do |v|
               unless File.exist?("diskgfs#{i}.vdi")
                 v.customize ['createhd', '--filename', "diskgfs#{i}", '--variant', 'Fixed', '--size', 1 * 1024]
