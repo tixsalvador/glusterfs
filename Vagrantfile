@@ -9,16 +9,17 @@ Vagrant.configure("2") do |config|
     end
     config.vm.provision "shell", inline: "sed -i '/#Password.*/s/^#//' /etc/ssh/sshd_config"
     config.vm.provision "shell", inline: "systemctl restart sshd"
-    config.vm.provision "shell", inline: "mkdir -p /mnt/glusterfs/brick1"
+    config.vm.provision "shell", inline: "mkdir -p /mnt/glusterfs"
     config.vm.provision "shell", inline: "`which parted` /dev/sdb mklabel msdos"
     config.vm.provision "shell", inline: "`which parted` /dev/sdb mkpart primary 0% 100%"
     config.vm.provision "shell", inline: " `which mkfs.xfs` -qf  /dev/sdb1"
-    config.vm.provision "shell", inline: "mount /dev/sdb1 /mnt/glusterfs/brick1"
-    config.vm.provision "shell", inline: "echo UUID=$(lsblk -o NAME,UUID | grep sdb1 | sed 's/^.*sdb1\s*//') /mnt/glusterfs/brick1 xfs defaults,noatime 0 0| tee -a  /etc/fstab"
+    config.vm.provision "shell", inline: "mount /dev/sdb1 /mnt/glusterfs"
+    config.vm.provision "shell", inline: "echo UUID=$(lsblk -o NAME,UUID | grep sdb1 | sed 's/^.*sdb1\s*//') /mnt/glusterfs xfs defaults,noatime 0 0| tee -a  /etc/fstab"
     config.vm.provision "shell", inline: "yum install -y centos-release-gluster"
     config.vm.provision "shell", inline: "yum install -y glusterfs gluster-cli glusterfs-libs glusterfs-server"
+    config.vm.provision "shell", inline: "systemctl start glusterd"
 
-    $instance=2
+    $instance=3
     (1..$instance).each do |i|
            config.vm.define "glusterfs#{i}" do |node|
              node.vm.hostname =  "glusterfs#{i}"

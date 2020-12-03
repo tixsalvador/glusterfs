@@ -15,7 +15,18 @@ Add peers run only on 1 node
 
 ```sh
 $  gluster peer probe 10.10.10.202
+$  gluster peer probe 10.10.10.203
 $  gluster peer status
+$  gluster pool list
+```
+Create gluster volume
+```sh
+$  gluster volume create mysqldata replica 3 transport tcp 10.10.10.201:/mnt/glusterfs/mysqldata/ 10.10.10.202:/mnt/glusterfs/mysqldata 10.10.10.203:/mnt/glusterfs/mysqldata/
+$   gluster volume start mysqldata
+```
+Check volume
+```sh
+$  gluster volume info all
 ```
 
 Reference:
