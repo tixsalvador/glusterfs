@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", inline: "yum install -y glusterfs gluster-cli glusterfs-libs glusterfs-server"
     config.vm.provision "shell", inline: "systemctl start glusterd"
 
-    $instance=3
+    $instance=2
     (1..$instance).each do |i|
            config.vm.define "glusterfs#{i}" do |node|
              node.vm.hostname =  "glusterfs#{i}"
