@@ -73,7 +73,7 @@ Create ssh keys for passwordless access to gluster nodes
 ```sh
 {
     ssh-keygen -f /etc/heketi/heketi_key -t rsa =N ''
-    for x in 1..2; do
+    for x in {1..2}; do
       ssh-copy-id -i /etc/heketi/heketi_key.pub root@10.10.10.20$x
     done
 }
