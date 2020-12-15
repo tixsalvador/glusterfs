@@ -81,5 +81,5 @@ Create ssh keys for passwordless access to gluster nodes
 
 Reference:
 
-- [https://archive.fosdem.org/2020/schedule/event/sds_gluster_thin_arbiter/attachments/slides/4110/export/events/attachments/sds_gluster_thin_arbiter/slides/4110/gluster_thin_arbiter_fosdem_2020.pdf](https://archive.fosdem.org/2020/schedule/event/sds_gluster_thin_arbiter/attachments/slides/4110/export/events/attachments/sds_gluster_thin_arbiter/slides/4110/gluster_thin_arbiter_fosdem_2020.pdf)
+- [A thin arbiter for glusterfs replication](https://archive.fosdem.org/2020/schedule/event/sds_gluster_thin_arbiter/attachments/slides/4110/export/events/attachments/sds_gluster_thin_arbiter/slides/4110/gluster_thin_arbiter_fosdem_2020.pdf)
 - [Setup GlusterFS Storage With Heketi on CentOS 8 / CentOS 7](https://computingforgeeks.com/setup-glusterfs-storage-with-heketi-on-centos-server/)
